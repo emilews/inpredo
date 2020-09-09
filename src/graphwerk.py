@@ -6,7 +6,7 @@ import uuid
 
 # Input your csv file here with historical data
 
-ad = genfromtxt('../financial_data/eurusd.csv', delimiter=',' ,dtype=str)
+ad = genfromtxt('../financial_data/eursd.csv', delimiter=',' ,dtype=str)
 pd = np.flipud(ad)
 
 buy_dir = '../data/train/buy/'
@@ -31,7 +31,7 @@ def graphwerk(start, finish):
         high.append(float(pd[start][2]))
         low.append(float(pd[start][3]))
         close.append(float(pd[start][4]))
-        volume.append(float(pd[start][5]))
+        #volume.append(float(pd[start][5]))
         date.append(pd[start][0])
         start = start + 1
 
@@ -86,5 +86,5 @@ iter = 0
 
 
 for x in range(len(pd)-4):
-   graphwerk(iter, iter+12)
+   graphwerk(iter, iter+6)
    iter = iter + 2

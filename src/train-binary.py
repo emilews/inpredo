@@ -28,8 +28,8 @@ else:
 # BEFORE STARTING TRAINING YOU NEED TO MANUALLY TAKE 20 PERCENENT OF THE TRAINING DATA AND PUT IT INTO VALIDATION FOLDER
 # I was too lazy to do it in the code.
 
-train_data_dir = './data/train/'
-validation_data_dir = './data/validation/'
+train_data_dir = '../data/train/'
+validation_data_dir = '../data/validation/'
 
 # Input the size of your sample images
 img_width, img_height = 150, 150
@@ -99,13 +99,13 @@ validation_generator = test_datagen.flow_from_directory(
 """
 Tensorboard log
 """
-target_dir = "./models/weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
-if not os.path.exists(target_dir):
-  os.mkdir(target_dir)
-model.save('./src/models/model.h5')
-model.save_weights('./src/models/weights.h5')
+target_dir = "../models/weights-improvement-{epoch:02d}-{val_accuracy:.2f}.hdf5"
+#if not os.path.exists(target_dir):
+  #os.mkdir(target_dir)
+model.save('../models/model.h5')
+model.save_weights('../models/weights.h5')
 
-checkpoint = ModelCheckpoint(target_dir, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+checkpoint = ModelCheckpoint(target_dir, monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 
 model.fit_generator(
